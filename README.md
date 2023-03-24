@@ -1,4 +1,13 @@
+# Table of contents
 
+- [Philosophers](https://github.com/amaitou/Philosophers#philosophers)
+- [The Dinning Philosophers Problem](https://github.com/amaitou/Philosophers#the-dinning-philosophers-problem)
+- [Threads](https://github.com/amaitou/Philosophers#threads)
+	- [Difference between threads and processes](https://github.com/amaitou/Philosophers#difference-between-threads-and-processes)
+	- [Thread Problems](https://github.com/amaitou/Philosophers#thread-problems)
+	- [Race Condition](https://github.com/amaitou/Philosophers#race-condition)
+		- [Locks or Mutexes](https://github.com/amaitou/Philosophers#locks-or-mutexes) 
+		- [Semaphors](https://github.com/amaitou/Philosophers#semaphors)
 ---
 # **Philosophers**
 
@@ -83,7 +92,7 @@ Since `The Dinning Philosophers Problem` Occurs when there a **Race Condition** 
 - > Semaphors
 
 	---
-- #### **Locks or Mutexes**
+#### **Locks or Mutexes**
 
 Mutexes are a type of synchronization mechanism used to prevent race conditions in multithreaded programs. A mutex, short for mutual exclusion, is a type of lock that allows only one thread to access a shared resource at a time.
 
