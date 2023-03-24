@@ -5,7 +5,7 @@
 # Table of contents
 
 - [Philosophers](https://github.com/amaitou/Philosophers#philosophers)
-- [The Dinning Philosophers Problem](https://github.com/amaitou/Philosophers#the-dinning-philosophers-problem)
+- [The  Philosophers Problem](https://github.com/amaitou/Philosophers#the-dining-philosophers-problem)
 - [Threads](https://github.com/amaitou/Philosophers#threads)
 	- [Difference between threads and processes](https://github.com/amaitou/Philosophers#difference-between-threads-and-processes)
 	- [Thread Problems](https://github.com/amaitou/Philosophers#thread-problems)
@@ -15,7 +15,7 @@
 ---
 # **Philosophers**
 
-This projects mainly aims to get you understand the basics of threads by solving a classical problem known as `The Dinning Philosophers Problem` (we will see it later).
+This projects mainly aims to get you understand the basics of threads by solving a classical problem known as `The Dining Philosophers Problem` (we will see it later).
 
 This project consists of two parts:
 - **Mandatory part**
@@ -25,7 +25,7 @@ This project consists of two parts:
 
 ---
 
-# **The Dinning Philosophers Problem**
+# **The Dining Philosophers Problem**
 
 The dining philosophers problem is a classic synchronization problem in computer science that was introduced by Edsger Dijkstra in 1965. The problem involves a group of philosophers who are sitting at a round table, each with a bowl of rice and a single chopstick between them. The philosophers spend their time thinking, eating and sleeping, and they need both chopsticks to eat their rice.
 
@@ -101,7 +101,7 @@ To avoid these problems, proper synchronization mechanisms and thread-safe progr
 
 ### **Race Condition**
 
-Since `The Dinning Philosophers Problem` Occurs when there a **Race Condition** that ladt will be our main problem to solve using some thechniques such as:
+Since `The Dining Philosophers Problem` Occurs when there a **Race Condition** that ladt will be our main problem to solve using some thechniques such as:
 - > Locks
 - > Semaphors
 
