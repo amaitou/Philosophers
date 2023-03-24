@@ -1,3 +1,6 @@
+---
+
+---
 # Table of contents
 
 - [Philosophers](https://github.com/amaitou/Philosophers#philosophers)
@@ -75,13 +78,23 @@ Using threads in a program can introduce several potential problems, including:
 
 - `Race conditions`: Race conditions occur when two or more threads access and modify a shared resource simultaneously, leading to unpredictable behavior and errors. This can occur if the threads are not properly synchronized, such as when one thread is reading while another is writing to the same resource.
 
+	---
+
 - `Deadlocks`: Deadlocks occur when two or more threads are waiting for each other to release a resource, leading to a situation where neither thread can proceed. This can occur if the threads acquire resources in a different order, or if they do not release resources properly.
+
+	---
 
 - `Priority inversion`: Priority inversion occurs when a lower-priority thread holds a resource that a higher-priority thread needs, preventing the higher-priority thread from executing. This can occur if the scheduler does not properly handle thread priorities.
 
+	---
+
 - `Starvation`: Starvation occurs when a thread is unable to acquire a required resource due to other threads continually using it, leading to the thread being unable to make progress.
 
+	---
+
 - `Oversubscription`: Oversubscription occurs when too many threads are created or scheduled, leading to contention for resources and slowing down the program.
+
+	---
 
 To avoid these problems, proper synchronization mechanisms and thread-safe programming techniques must be used to ensure that threads can execute safely and efficiently. This includes the use of locks, semaphores, and other synchronization primitives to control access to shared resources, as well as careful design and testing of the program to avoid common concurrency issues.
 
@@ -92,6 +105,8 @@ Since `The Dinning Philosophers Problem` Occurs when there a **Race Condition** 
 - > Semaphors
 
 	---
+
+---
 #### **Locks or Mutexes**
 
 Mutexes are a type of synchronization mechanism used to prevent race conditions in multithreaded programs. A mutex, short for mutual exclusion, is a type of lock that allows only one thread to access a shared resource at a time.
@@ -101,6 +116,8 @@ When a thread wants to access a shared resource, it first acquires the mutex loc
 Mutexes can be implemented using operating system primitives or programming language constructs. In most programming languages, mutexes are implemented as a data structure that contains a flag indicating whether the mutex is currently locked or unlocked, and functions for acquiring and releasing the mutex.
 
 Mutexes are a powerful tool for preventing race conditions in multithreaded programs, but they can also introduce new problems such as deadlocks if not used properly. Deadlocks can occur if two or more threads are waiting for mutex locks held by other threads, leading to a situation where none of the threads can proceed. To avoid deadlocks, proper locking protocols and design patterns must be followed, such as always acquiring locks in a consistent order and avoiding nested locks.
+
+---
 
 #### **Semaphors**
 
@@ -143,6 +160,8 @@ Semaphors has to types which are:
 
 	Each semaphore has an integer value and a list of processes list. When a process must wait on a `semaphore`, it is added to the list of processes. A `signal()` operation removes one process from the list of waiting processes and awakens that process.
 
+	---
+
 	Now, the `wait()` semaphore operation can be defined as:
 
 	```c
@@ -155,6 +174,8 @@ Semaphors has to types which are:
 			} 	
 		}
 	```
+
+	---
 	and the `signal()` semaphore operation can be defined as:
 
 	```c
@@ -171,3 +192,5 @@ Semaphors has to types which are:
 	The list of waiting processes can be easily implemented by a link field in each process control block (PCB). Each semaphore contains an integer value and a pointer to a list of PCBs. One way to add and remove processes from the list so as to ensure bounded waiting is to use a FIFO queue, where the semaphore contains both head and tail pointers to the queue. In general, however, the list can use any queueing strategy. Correct usage of semaphores does not depend on a particular queueing strategy for the semaphore lists.
 
 	Note -> If ou want to get close and close to know more about `PCBs` I suggest read this article  [Scaler - Process Cotnrol Table](https://www.scaler.com/topics/operating-system/process-control-block-in-os/)
+
+---
