@@ -5,7 +5,7 @@
 # Table of contents
 
 - [Philosophers](https://github.com/amaitou/Philosophers#philosophers)
-- [The  Philosophers Problem](https://github.com/amaitou/Philosophers#the-dining-philosophers-problem)
+- [The Dining Philosophers Problem](https://github.com/amaitou/Philosophers#the-dining-philosophers-problem)
 - [Threads](https://github.com/amaitou/Philosophers#threads)
 	- [Difference between threads and processes](https://github.com/amaitou/Philosophers#difference-between-threads-and-processes)
 	- [Thread Problems](https://github.com/amaitou/Philosophers#thread-problems)
