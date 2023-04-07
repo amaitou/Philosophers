@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/06 01:56:44 by amait-ou          #+#    #+#             */
+/*   Updated: 2023/04/07 08:26:11 by amait-ou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "philo.h"
+
+void	mutex_init(t_all *all)
+{
+	int	i;
+
+	i = 0;
+	all->mutex = malloc(sizeof(pthread_mutex_t) * all->number);
+	if (!all->mutex)
+		return ;
+	while (i < all->number)
+	{
+		pthread_mutex_init(&all->mutex[i], NULL);
+		++i;
+	}
+	pthread_mutex_init(&all->print, NULL);
+}
+
+void	philosopher_init(t_all *all)
+{
+	int	i;
+	t_ll	t;
+
+	i = 0;
+	t = get_time();
+	while (i < all->number)
+	{
+		all->philo[i].id = i + 1;
+		all->philo[i].l_meal = t;
+		all->philo[i].n_meals = 0;
+		all->philo[i].t_die = philo_atoi(all->times[2]);
+		all->philo[i].t_eat = philo_atoi(all->times[3]);
+		all->philo[i].t_sleep = philo_atoi(all->times[4]);
+		all->philo[i].print = &all->print;
+		all->philo[i].left = &all->mutex[i];
+		all->philo[i].right = &all->mutex[(i + 1) % all->number];
+		all->philo[i].s_time = t;
+		++i;
+	}
+}
+
+void	thread_create(t_all *all)
+{
+	int	i;
+
+	i = 0;
+	while (i < all->number)
+	{
+		pthread_create(&all->philo[i].thread, NULL, &routine, &all->philo[i]);
+		++i;
+	}
+}

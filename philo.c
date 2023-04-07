@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers_utils.c                               :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/26 22:49:03 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/03/27 00:52:19 by amait-ou         ###   ########.fr       */
+/*   Created: 2023/04/05 05:08:30 by amait-ou          #+#    #+#             */
+/*   Updated: 2023/04/07 08:00:07 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
-long	current_time(t_philo *philo)
+int	main(int ac, char **ag)
 {
-	long	msc;
+	t_all	all;
 
-	gettimeofday(philo->time, NULL);
-	msc = philo->time->tv_sec * 1000 + philo->time->tv_usec / 1000;
-	return (msc);
+	if (ac >= 5)
+	{
+		all.number = philo_atoi(ag[1]);
+		all.times = ag;
+		all.philo = malloc(sizeof(t_philo) * all.number);
+		if (!all.philo)
+			return (0);
+		mutex_init(&all);
+		philosopher_init(&all);
+		thread_create(&all);
+	}
+	while (1)
+		;
+	return (0);
 }
