@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 01:56:44 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/07 08:26:11 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:10:59 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ void	philosopher_init(t_all *all)
 		all->philo[i].t_die = philo_atoi(all->times[2]);
 		all->philo[i].t_eat = philo_atoi(all->times[3]);
 		all->philo[i].t_sleep = philo_atoi(all->times[4]);
+		if (all->times[5])
+			all->philo[i].m_meals = philo_atoi(all->times[5]);
+		else
+			all->philo[i].m_meals = 0;
 		all->philo[i].print = &all->print;
 		all->philo[i].left = &all->mutex[i];
 		all->philo[i].right = &all->mutex[(i + 1) % all->number];

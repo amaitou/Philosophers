@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 04:30:31 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/07 08:26:33 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:56:52 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*routine(void *arg)
 		printf(MSG, GREEN, get_time() - philo->s_time, philo->id, EATING, WHITE);
 		pthread_mutex_unlock(philo->print);
 		
-		philo->l_meal = get_time() - philo->s_time;
+		philo->l_meal = get_time();
 		philo->n_meals++;
 		_usleep(philo->t_eat);
 

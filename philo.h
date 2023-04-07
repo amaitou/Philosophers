@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 00:55:18 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/07 08:04:33 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:31:06 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	t_ll			l_meal;
 	int				n_meals;
+	int				m_meals;
 	t_ll			s_time;
 	pthread_mutex_t	*print;
 }	t_philo;
