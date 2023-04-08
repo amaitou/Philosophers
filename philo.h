@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 00:55:18 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 05:21:46 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:53:56 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef long long	t_ll;
 typedef struct s_philo
 {
 	int				id;
+	int				n_eat;
 	t_ll			t_die;
 	t_ll			t_eat;
 	t_ll			t_sleep;

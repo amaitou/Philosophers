@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 01:56:44 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 00:36:59 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:54:22 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	philosopher_init(t_all *all)
 		all->philo[i].left = &all->mutex[i];
 		all->philo[i].right = &all->mutex[(i + 1) % all->number];
 		all->philo[i].s_time = t;
+		all->philo[i].n_eat = 0;
 		++i;
 	}
 }

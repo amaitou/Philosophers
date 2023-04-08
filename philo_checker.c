@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:19:06 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 05:22:05 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:32:40 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,31 @@ int	philo_arguments(char **ag)
 {
 	if (philo_atoi(ag[1]) <= 0 || philo_atoi(ag[2]) <= 0
 		|| philo_atoi(ag[3]) <= 0 || philo_atoi(ag[4]) <= 0
-		|| (ag[5] && philo_atoi(ag[5]) <= 0))
+		|| (ag[5] && philo_atoi(ag[5]) < 0))
 		return (0);
+	return (1);
+}
+
+void	check_meals(t_philo *philo)
+{
+	if (philo->n_meals >= philo->m_meals
+		&& philo->m_meals)
+	{
+		philo->n_eat = 1;
+	}
+}
+
+int	check_eaten(t_all *all)
+{
+	int	i;
+
+	i = 0;
+	while (i < all->number)
+	{
+		if (all->philo[i].n_eat != 1)
+			return (0);
+		++i;
+	}
 	return (1);
 }
 
@@ -32,12 +55,11 @@ void	philo_checker(t_all *all)
 		i = -1;
 		while (++i < all->number)
 		{
-			if (all->philo[i].n_meals == all->philo[i].m_meals)
+			check_meals(&all->philo[i]);
+			if (check_eaten(all))
 			{
-				c++;
-				_usleep(50);
-				if (c == all->number)
-					return ;
+				philo_free(all);
+				return ;
 			}
 			else if (get_time() - all->philo[i].l_meal >= all->philo[i].t_die)
 			{
