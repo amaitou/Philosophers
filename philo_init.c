@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 01:56:44 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/07 21:10:59 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/08 00:36:59 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	mutex_init(t_all *all)
 
 void	philosopher_init(t_all *all)
 {
-	int	i;
+	int		i;
 	t_ll	t;
 
 	i = 0;
@@ -53,6 +53,15 @@ void	philosopher_init(t_all *all)
 		all->philo[i].s_time = t;
 		++i;
 	}
+}
+
+void	all_init(t_all *all, char **ag)
+{
+	all->number = philo_atoi(ag[1]);
+	all->times = ag;
+	all->philo = malloc(sizeof(t_philo) * all->number);
+	if (!all->philo)
+		return ;
 }
 
 void	thread_create(t_all *all)

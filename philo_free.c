@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   philo_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 05:08:30 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 05:08:33 by amait-ou         ###   ########.fr       */
+/*   Created: 2023/04/08 05:16:39 by amait-ou          #+#    #+#             */
+/*   Updated: 2023/04/08 05:21:27 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **ag)
+void	philo_free(t_all *all)
 {
-	t_all	all;
+	int	i;
 
-	if (ac >= 5)
+	i = 0;
+	while (i < all->number)
 	{
-		if (!philo_arguments(ag))
-			return (0);
-		all_init(&all, ag);
-		mutex_init(&all);
-		philosopher_init(&all);
-		thread_create(&all);
-		philo_checker(&all);
+		pthread_mutex_destroy(&all->mutex[i]);
+		++i;
 	}
-	else
-		printf("%s[!] Missing Arguments\n", RED);
-	return (0);
+	pthread_mutex_destroy(&all->print);
+	free(all->philo);
 }

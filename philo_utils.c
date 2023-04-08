@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 05:06:08 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/06 02:58:54 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/08 02:48:27 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,11 @@ void	philo_msg(char *s, int id, pthread_mutex_t *print, t_ll time)
 	pthread_mutex_lock(print);
 	printf(MSG, GREEN, get_time() - time, id, s, WHITE);
 	pthread_mutex_unlock(print);
+}
+
+void	print_locker(char *s, t_philo *philo, char *c)
+{
+	pthread_mutex_lock(philo->print);
+	printf(MSG, c, get_time() - philo->s_time, philo->id, s, WHITE);
+	pthread_mutex_unlock(philo->print);
 }
