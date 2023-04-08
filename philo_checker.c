@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:19:06 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 21:32:40 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:49:14 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,14 @@ int	philo_arguments(char **ag)
 	return (1);
 }
 
-void	check_meals(t_philo *philo)
+static void	check_meals(t_philo *philo)
 {
 	if (philo->n_meals >= philo->m_meals
 		&& philo->m_meals)
-	{
 		philo->n_eat = 1;
-	}
 }
 
-int	check_eaten(t_all *all)
+static int	check_eaten(t_all *all)
 {
 	int	i;
 
