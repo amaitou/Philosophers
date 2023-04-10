@@ -13,10 +13,12 @@ CFILES = philo_checker.c \
 all: $(NAME)
 
 $(NAME): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES) -o $@
+	@echo "\033[95m[.] output *.c to philo\033[0m"
+	@$(CC) $(CFLAGS) $(CFILES) -o $@
 
 clean:
-	rm -rf $(NAME)
+	@echo "\033[95m[.] remove the executable file\033[0m"
+	@rm -rf $(NAME)
 
 fclean: clean
 
