@@ -1,6 +1,6 @@
 
 NAME = philo
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 CFILES = philo_checker.c \

@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 01:56:44 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 20:54:22 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/09 04:45:07 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	mutex_init(t_all *all)
 	while (i < all->number)
 	{
 		pthread_mutex_init(&all->mutex[i], NULL);
+		pthread_mutex_init(&all->philo[i].meal_assigning, NULL);
+		pthread_mutex_init(&all->philo[i].meal_timing, NULL);
 		++i;
 	}
 	pthread_mutex_init(&all->print, NULL);
@@ -52,6 +54,7 @@ void	philosopher_init(t_all *all)
 		all->philo[i].right = &all->mutex[(i + 1) % all->number];
 		all->philo[i].s_time = t;
 		all->philo[i].n_eat = 0;
+		all->philo[i].is_dead = 0;
 		++i;
 	}
 }

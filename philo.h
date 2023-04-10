@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 00:55:18 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 20:53:56 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/10 03:51:27 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ typedef struct s_philo
 {
 	int				id;
 	int				n_eat;
+	int				is_dead;
 	t_ll			t_die;
 	t_ll			t_eat;
 	t_ll			t_sleep;
 	pthread_mutex_t	*left;
 	pthread_mutex_t	*right;
+	pthread_mutex_t	meal_assigning;
+	pthread_mutex_t	meal_timing;
 	pthread_t		thread;
 	t_ll			l_meal;
 	int				n_meals;
@@ -68,7 +71,6 @@ void	mutex_init(t_all *all);
 void	philosopher_init(t_all *all);
 void	*routine(void *arg);
 void	thread_create(t_all *all);
-int		philo_arguments(char **ag);
 void	all_init(t_all *all, char **ag);
 void	philo_checker(t_all *all);
 void	print_locker(char *s, t_philo *philo, char *c);

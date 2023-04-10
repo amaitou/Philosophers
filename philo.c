@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 05:08:30 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 05:08:33 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/10 03:58:01 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	main(int ac, char **ag)
 
 	if (ac >= 5)
 	{
-		if (!philo_arguments(ag))
+		if (philo_atoi(ag[1]) <= 0 || philo_atoi(ag[2]) <= 0
+			|| philo_atoi(ag[3]) <= 0 || philo_atoi(ag[4]) <= 0
+			|| (ag[5] && philo_atoi(ag[5]) <= 0))
 			return (0);
 		all_init(&all, ag);
 		mutex_init(&all);
