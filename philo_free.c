@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 05:16:39 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 05:21:27 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:53:28 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	philo_free(t_all *all)
 	while (i < all->number)
 	{
 		pthread_mutex_destroy(&all->mutex[i]);
+		pthread_mutex_destroy(&all->philo[i].meal_assigning);
+		pthread_mutex_destroy(&all->philo[i].meal_timing);
 		++i;
 	}
 	pthread_mutex_destroy(&all->print);
