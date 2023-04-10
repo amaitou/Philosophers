@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:19:06 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/10 03:58:25 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/10 04:03:34 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	check_meals(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->meal_assigning);
-	if (philo->n_meals >= philo->m_meals)
+	if (philo->n_meals >= philo->m_meals && philo->m_meals)
 		philo->n_eat = 1;
 	pthread_mutex_unlock(&philo->meal_assigning);
 }
