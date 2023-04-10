@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:19:06 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/10 04:03:34 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/10 05:17:10 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	check_meals(t_philo *philo)
 
 static void	check_death(t_philo *philo)
 {
-	if (get_time() - philo->l_meal >= philo->t_die)
+	if (get_time() - philo->l_meal > philo->t_die)
 		philo->is_dead = 1;
 }
 
