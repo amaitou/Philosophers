@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:19:06 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/10 05:17:10 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:20:55 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static int	check_eaten(t_all *all)
 void	death_helper(t_philo *philo, t_all *all)
 {
 	pthread_mutex_lock(&all->print);
-	printf(MSG, BLUE, get_time() - philo->s_time,
-		all->philo->id, DIED, RED);
+	printf(MSG, RED, get_time() - philo->s_time,
+		all->philo->id, DIED, WHITE);
 	philo_free(all);
 }
 
