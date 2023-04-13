@@ -6,7 +6,7 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 00:55:18 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/10 03:51:27 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/13 05:35:04 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,61 +19,50 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define MSG "%s%lld %d %s%s\n"
+# define MSG "%lld %d %s\n"
 
-# define EATING "is eating"
-# define SLEEPING "is sleeping"
 # define THINKING "is thinking"
 # define FORKING "has taken a fork"
+# define EATING "is eating"
+# define SLEEPING "is sleeping"
 # define DIED "died"
 
-# define RED "\x1B[31m"
-# define BLUE "\x1B[34m"
-# define YELLOW "\x1B[33m"
-# define GREEN "\x1B[32m" 
-# define WHITE "\x1B[37m"
+typedef unsigned long	t_ul;
 
-typedef long long	t_ll;
+typedef struct s_all
+{
+	int				n_philos;
+	int				m_meals;
+	t_ul			t_die;
+	t_ul			t_eat;
+	t_ul			t_sleep;
+	t_ul			s_time;
+	pthread_mutex_t	write;
+	pthread_mutex_t	death;
+	pthread_mutex_t	*mutex;
+}	t_all;
 
 typedef struct s_philo
 {
 	int				id;
-	int				n_eat;
 	int				is_dead;
-	t_ll			t_die;
-	t_ll			t_eat;
-	t_ll			t_sleep;
-	pthread_mutex_t	*left;
-	pthread_mutex_t	*right;
-	pthread_mutex_t	meal_assigning;
-	pthread_mutex_t	meal_timing;
+	int				n_eaten;
 	pthread_t		thread;
-	t_ll			l_meal;
-	int				n_meals;
-	int				m_meals;
-	t_ll			s_time;
-	pthread_mutex_t	*print;
+	int				reached_eat;
+	t_ul			l_meal;
+	t_all			*all;
 }	t_philo;
 
-typedef struct s_all
-{
-	pthread_mutex_t	*mutex;
-	pthread_mutex_t	print;
-	t_philo			*philo;
-	int				number;
-	char			**times;
-}	t_all;
-
-t_ll	get_time(void);
-int		_usleep(t_ll _sleep);
-int		philo_atoi(const char *str);
-void	mutex_init(t_all *all);
-void	philosopher_init(t_all *all);
+t_all	*all_init(char **ag);
+t_philo	*philo_init(t_all *all);
 void	*routine(void *arg);
-void	thread_create(t_all *all);
-void	all_init(t_all *all, char **ag);
-void	philo_checker(t_all *all);
-void	print_locker(char *s, t_philo *philo, char *c);
-void	philo_free(t_all *all);
+void	thread_create(t_philo *philo);
+t_ul	get_time(void);
+int		philo_atoi(const char *str);
+int		_usleep(t_ul _sleep);
+void	write_locker(char *s, t_philo *philo);
+void	mutex_init(t_philo *philo);
+void	philo_free(t_philo *philo);
+void	*philo_detach(t_philo *philo);
 
 #endif

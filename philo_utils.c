@@ -6,33 +6,29 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 05:06:08 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/08 23:13:50 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/12 08:24:10 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_ll	get_time(void)
+t_ul	get_time(void)
 {
 	struct timeval	t;
-	t_ll			msc;
+	t_ul			msc;
 
 	gettimeofday(&t, NULL);
 	msc = t.tv_sec * 1000 + t.tv_usec / 1000;
 	return (msc);
 }
 
-int	_usleep(t_ll _sleep)
+int	_usleep(t_ul _sleep)
 {
-	t_ll	start;
+	t_ul	start;
 
 	start = get_time();
-	while (1)
-	{
-		if (get_time() - start == _sleep)
-			return (0);
-		usleep(100);
-	}
+	while (get_time() - start < _sleep)
+		usleep(200);
 	return (0);
 }
 
@@ -62,16 +58,17 @@ int	philo_atoi(const char *str)
 	return (r * s);
 }
 
-void	philo_msg(char *s, int id, pthread_mutex_t *print, t_ll time)
+void	write_locker(char *s, t_philo *philo)
 {
-	pthread_mutex_lock(print);
-	printf(MSG, GREEN, get_time() - time, id, s, WHITE);
-	pthread_mutex_unlock(print);
+	pthread_mutex_lock(&philo->all->write);
+	printf("%lu %d %s\n", get_time() - \
+		philo->all->s_time, philo->id + 1, s);
+	pthread_mutex_unlock(&philo->all->write);
 }
 
-void	print_locker(char *s, t_philo *philo, char *c)
+void	philo_free(t_philo *philo)
 {
-	pthread_mutex_lock(philo->print);
-	printf(MSG, c, get_time() - philo->s_time, philo->id, s, WHITE);
-	pthread_mutex_unlock(philo->print);
+	free(philo->all->mutex);
+	free(philo->all);
+	free(philo);
 }

@@ -6,48 +6,43 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 04:30:31 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/10 05:15:29 by amait-ou         ###   ########.fr       */
+/*   Updated: 2023/04/13 04:41:55 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static	void	meal_assign_locker(t_philo *philo)
+void	eating(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->meal_assigning);
+	pthread_mutex_lock(&philo->all->mutex[(philo->id + 1) % \
+		philo->all->n_philos]);
+	write_locker(FORKING, philo);
+	pthread_mutex_lock(&philo->all->mutex[philo->id]);
+	write_locker(FORKING, philo);
+	write_locker(EATING, philo);
+	pthread_mutex_lock(&philo->all->death);
 	philo->l_meal = get_time();
-	pthread_mutex_unlock(&philo->meal_assigning);
-}
-
-static	void	meal_time_locker(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->meal_timing);
-	philo->n_meals++;
-	pthread_mutex_unlock(&philo->meal_timing);
+	pthread_mutex_unlock(&philo->all->death);
+	_usleep(philo->all->t_eat);
+	pthread_mutex_lock(&philo->all->death);
+	philo->n_eaten++;
+	pthread_mutex_unlock(&philo->all->death);
+	pthread_mutex_unlock(&philo->all->mutex[(philo->id + 1) % \
+		philo->all->n_philos]);
+	pthread_mutex_unlock(&philo->all->mutex[philo->id]);
 }
 
 void	*routine(void *arg)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *)arg;
-	if (philo->id % 2 == 0)
-		usleep(1000);
+	philo = arg;
 	while (1)
 	{
-		print_locker(THINKING, philo, YELLOW);
-		pthread_mutex_lock(philo->left);
-		print_locker(FORKING, philo, WHITE);
-		pthread_mutex_lock(philo->right);
-		print_locker(FORKING, philo, WHITE);
-		print_locker(EATING, philo, GREEN);
-		meal_assign_locker(philo);
-		meal_time_locker(philo);
-		_usleep(philo->t_eat);
-		pthread_mutex_unlock(philo->left);
-		pthread_mutex_unlock(philo->right);
-		print_locker(SLEEPING, philo, BLUE);
-		_usleep(philo->t_sleep);
+		write_locker(THINKING, philo);
+		eating(philo);
+		write_locker(SLEEPING, philo);
+		_usleep(philo->all->t_sleep);
 	}
-	return (NULL);
+	return ((void *)0);
 }

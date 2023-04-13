@@ -3,12 +3,11 @@ NAME = philo
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-CFILES = philo_checker.c \
-		 philo_init.c \
+CFILES = philo_init.c \
 		 philo_routine.c \
 		 philo_utils.c \
 		 philo.c \
-		 philo_free.c \
+		 philo_detach.c
 
 all: $(NAME)
 

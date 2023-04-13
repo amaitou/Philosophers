@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_free.c                                       :+:      :+:    :+:   */
+/*   philo_join.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 05:16:39 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/10 22:53:28 by amait-ou         ###   ########.fr       */
+/*   Created: 2023/04/13 03:06:25 by amait-ou          #+#    #+#             */
+/*   Updated: 2023/04/13 04:46:43 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philo_free(t_all *all)
+void	*philo_detach(t_philo *philo)
 {
 	int	i;
 
-	i = 0;
-	while (i < all->number)
-	{
-		pthread_mutex_destroy(&all->mutex[i]);
-		pthread_mutex_destroy(&all->philo[i].meal_assigning);
-		pthread_mutex_destroy(&all->philo[i].meal_timing);
-		++i;
-	}
-	pthread_mutex_destroy(&all->print);
-	free(all->philo);
+	i = -1;
+	while (++i < philo->all->n_philos)
+		pthread_detach(philo[i].thread);
+	i = -1;
+	while (++i < philo->all->n_philos)
+		pthread_mutex_destroy(&philo->all->mutex[i]);
+	pthread_mutex_destroy(&philo->all->write);
+	pthread_mutex_destroy(&philo->all->death);
+	philo_free(philo);
+	return ((void *)0);
 }
