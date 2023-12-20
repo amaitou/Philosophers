@@ -15,25 +15,25 @@
 ---
 # **Philosophers**
 
-This projects mainly aims to get you understand the basics of threads by solving a classical problem known as `The Dining Philosophers Problem` (we will see it later).
+This project mainly aims to help you understand the basics of threads by solving a classical problem known as `The Dining Philosophers Problem` (we will see it later).
 
 This project consists of two parts:
 - **Mandatory part**
 - **Bonus Part**
 
-> Note: The **Bonus Part** is not that necessary to validate the project, but it gives some extra XPs and days for the **`The Blackhole`**.
+> Note: The **Bonus Part** is not that necessary to validate the project, but it gives some extra XPs and days for the **` The Blackhole`**.
 
 ---
 
 # **The Dining Philosophers Problem**
 
-The dining philosophers problem is a classic synchronization problem in computer science that was introduced by Edsger Dijkstra in 1965. The problem involves a group of philosophers who are sitting at a round table, each with a bowl of rice and a single chopstick between them. The philosophers spend their time thinking, eating and sleeping, and they need both chopsticks to eat their rice.
+The dining philosophers problem is a classic synchronization problem in computer science that was introduced by Edsger Dijkstra in 1965. The problem involves a group of philosophers who are sitting at a round table, each with a bowl of rice and a single chopstick between them. The philosophers spend their time thinking, eating and sleeping, and they need chopsticks to eat their rice.
 
 The problem arises when all the philosophers reach for their left chopstick at the same time, leaving no chopstick for the philosopher on their right. This situation is called a deadlock, and it can cause the philosophers to starve.
 
 The dining philosophers problem is a classic example of a concurrency problem, where multiple processes are trying to access shared resources in a way that can cause conflicts and synchronization issues.
 
-In order to solve this problem you must be familiar with a concept in computer science that comes under tha name of `Threads` (our next topic).
+To solve this problem you must be familiar with a concept in computer science that comes under the name of `Threads` (our next topic).
 
 ---
 
@@ -43,7 +43,7 @@ In computer programming, a thread is a lightweight process that can run concurre
 
 A thread shares the same memory space and system resources as other threads within the same process, but each thread has its own program counter, stack, and set of registers. This allows multiple threads to execute code independently of each other, even if they are running the same program.
 
-Threads can be created and managed by the operating system or by the application itself. Threads can also communicate with each other and share data through shared memory or message passing mechanisms.
+Threads can be created and managed by the operating system or by the application itself. Threads can also communicate with each other and share data through shared memory or message-passing mechanisms.
 
 ### **Difference between threads and processes**
 
@@ -101,7 +101,7 @@ To avoid these problems, proper synchronization mechanisms and thread-safe progr
 
 ### **Race Condition**
 
-Since `The Dining Philosophers Problem` Occurs when there a **Race Condition** that ladt will be our main problem to solve using some thechniques such as:
+Since `The Dining Philosophers Problem` Occurs when there is a **Race Condition** that ladt will be our main problem to solve using some techniques such as:
 - > Locks
 - > Semaphors
 
@@ -128,10 +128,10 @@ A semaphore can be used to limit the number of threads that can access a resourc
 
 When a thread finishes accessing the resource, it increments the semaphore counter, signaling to other threads that the resource is available again. This allows other waiting threads to proceed and access the resource.
 
-Semaphors has to types which are:
+Semaphore has two types which are:
 - > Counted Semaphors:
 	
-	Counting semaphores are a type of semaphore used to control access to a shared resource in multithreaded programs. <br />
+	Counting semaphores is a type of semaphore used to control access to a shared resource in multithreaded programs. <br />
 	
 	A counting semaphore is initialized with a positive integer value, which represents the maximum number of threads that can access the shared resource simultaneously. When a thread wants to access the shared resource, it decrements the semaphore value by one. If the semaphore value is already zero, the thread is blocked until another thread releases the shared resource by incrementing the semaphore value.
 
@@ -192,6 +192,6 @@ Semaphors has to types which are:
 
 	The list of waiting processes can be easily implemented by a link field in each process control block (PCB). Each semaphore contains an integer value and a pointer to a list of PCBs. One way to add and remove processes from the list so as to ensure bounded waiting is to use a FIFO queue, where the semaphore contains both head and tail pointers to the queue. In general, however, the list can use any queueing strategy. Correct usage of semaphores does not depend on a particular queueing strategy for the semaphore lists.
 
-	Note -> If ou want to get close and close to know more about `PCBs` I suggest read this article  [Scaler - Process Cotnrol Table](https://www.scaler.com/topics/operating-system/process-control-block-in-os/)
+	Note -> If you want to get close and close to knowing more about `PCBs` I suggest reading this article  [Scaler - Process Cotnrol Table](https://www.scaler.com/topics/operating-system/process-control-block-in-os/)
 
 ---
