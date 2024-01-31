@@ -25,6 +25,23 @@ This project consists of two parts:
 
 ---
 
+# Project Structure
+
+```
+|____.gitignore
+|____includes
+| |____philo.h
+|____Makefile
+|____README.md
+|____sources
+| |____philo.c
+| |____philo_detach.c
+| |____philo_init.c
+| |____philo_routine.c
+| |____philo_utils.c
+```
+---
+
 # **The Dining Philosophers Problem**
 
 The dining philosophers problem is a classic synchronization problem in computer science that was introduced by Edsger Dijkstra in 1965. The problem involves a group of philosophers who are sitting at a round table, each with a bowl of rice and a single chopstick between them. The philosophers spend their time thinking, eating and sleeping, and they need chopsticks to eat their rice.
