@@ -6,11 +6,11 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 04:30:31 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/13 04:41:55 by amait-ou         ###   ########.fr       */
+/*   Updated: 2024/01/31 03:21:47 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	eating(t_philo *philo)
 {

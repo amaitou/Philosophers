@@ -1,23 +1,25 @@
-
 NAME = philo
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+INCLUDE_DIR = ./includes
+SOURCE_DIR = ./sources
 
-CFILES = philo_init.c \
-		 philo_routine.c \
-		 philo_utils.c \
-		 philo.c \
-		 philo_detach.c
+CFILES = $(wildcard $(SOURCE_DIR)/*.c)
+SOURCES = $(CFILES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(CFILES)
-	@echo "\033[95m[.] output *.c to philo\033[0m"
-	@$(CC) $(CFLAGS) $(CFILES) -o $@
+$(NAME): $(SOURCES)
+	@echo "\033[92m[.] Building $(NAME)\033[0m"
+	@$(CC) $(CFLAGS) $^ -o $@
+
+./$(SOURCE_DIR)/%.o: $(SOURCE_DIR)/%.c ./$(INCLUDE_DIR)/philo.h
+	@echo "\033[33m[.] Compiling $<\033[0m"
+	@$(CC) $(CFLAGS)  $< -c -o $@
 
 clean:
-	@echo "\033[95m[.] remove the executable file\033[0m"
-	@rm -rf $(NAME)
+	@echo "\033[91m[.] Cleaning up\033[0m"
+	@rm -rf $(NAME) $(SOURCES)
 
 fclean: clean
 

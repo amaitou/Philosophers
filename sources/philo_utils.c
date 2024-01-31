@@ -6,11 +6,11 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 05:06:08 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/12 08:24:10 by amait-ou         ###   ########.fr       */
+/*   Updated: 2024/01/31 03:21:50 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 t_ul	get_time(void)
 {

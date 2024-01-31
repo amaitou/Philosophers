@@ -6,11 +6,11 @@
 /*   By: amait-ou <amait-ou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 01:56:44 by amait-ou          #+#    #+#             */
-/*   Updated: 2023/04/13 05:28:01 by amait-ou         ###   ########.fr       */
+/*   Updated: 2024/01/31 03:21:42 by amait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 int	fork_init(t_all *all)
 {
