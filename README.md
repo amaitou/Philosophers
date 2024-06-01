@@ -212,3 +212,10 @@ Semaphore has two types which are:
 	Note -> If you want to get close and close to knowing more about `PCBs` I suggest reading this article  [Scaler - Process Cotnrol Table](https://www.scaler.com/topics/operating-system/process-control-block-in-os/)
 
 ---
+
+### **Contact Me**
+
+* [Twitter][_1]
+
+[_1]: https://twitter.com/amait0u
+
